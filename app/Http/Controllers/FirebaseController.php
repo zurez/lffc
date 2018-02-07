@@ -20,7 +20,7 @@ class FirebaseController extends Controller
         for ($i=0; $i <4; $i++) { 
         	dump($delay_time);
         	$job= (new SendFirebaseNotifications($tokens))->delay($delay_time);
-        	$delay_time+=10;
+        	$delay_time+=60;
         	$this->dispatch($job);
 
         }
