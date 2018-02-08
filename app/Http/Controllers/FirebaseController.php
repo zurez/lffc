@@ -39,7 +39,7 @@ class FirebaseController extends Controller
 
         $delay_time=0;
         $flag=0;
-        $limit=10;
+        $limit=500;
         
         for ($i=0; $i <4; $i++) { 
         	$customers=Customers::where("ftoken","!=","")->skip($flag)->take($limit)->get();
@@ -53,7 +53,7 @@ class FirebaseController extends Controller
             array_push($tokens,$mtokens[$i]);
             dump($tokens);
         	$job= (new SendFirebaseNotifications($tokens,$title,$data))->delay($delay_time);
-        	$delay_time+=120;
+        	$delay_time+=180;
         	$this->dispatch($job);
 
         }
