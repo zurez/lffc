@@ -76,17 +76,14 @@ class SendFirebaseNotifications extends Job implements SelfHandling, ShouldQueue
         // $tokens = MYDATABASE=>=>pluck('fcm_token')->toArray();
 
         $downstreamResponse = FCM::sendTo($tokens, $option, null, $data);
-       
+        dump($downstreamResponse);
         $success=$downstreamResponse->numberSuccess();
-        Log::info("Success",$success);
-        Log::info("*******************************************")
-        Log::info("Failed",$downstreamResponse->numberFailure());
-        Log::info("*******************************************")
-        $need_mod=$downstreamResponse->numberModification();
+        $dt=$downstreamResponse->numberFailure();
+        $downstreamResponse->numberModification();
         // Log::info("ERRORS. ".$topicResponse->error());
         //return Array - you must remove all this tokens in your database
         $downstreamResponse->tokensToDelete();
-        
+     
         //return Array (key => oldToken, value => new token - you must change the token in your database )
         $downstreamResponse->tokensToModify();
 
@@ -95,5 +92,12 @@ class SendFirebaseNotifications extends Job implements SelfHandling, ShouldQueue
 
         // return Array (key=>token, value=>errror) - in production you should remove from your database the tokens present in this array
         $downstreamResponse->tokensWithError();
+        $report=array();
+        $report["success"]=$success;
+        $report["failed"]=$dt;
+        Log::info("***************************");
+        Log::info("REPORT",$report);
+        Log::info("***************************");
+
     }
 }
