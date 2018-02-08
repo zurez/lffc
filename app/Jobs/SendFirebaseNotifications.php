@@ -44,9 +44,9 @@ class SendFirebaseNotifications extends Job implements SelfHandling, ShouldQueue
         $title="New Hacks are added!";
         $data=[
             "image"=>
-                "https://s3-us-west-2.amazonaws.com/newlifehacks/noti_5feb.png",
+                "https://s3-us-west-2.amazonaws.com/newlifehacks/banner_06_02.png",
             "message"=>
-                "Need some free WiFi? The best places to go are Panera, McDonalds, Apple Store, Office Depot, Staples, and Courtyard Marriott.",
+                "..",
             "AnotherActivity"=>
                 "True",
             "title"=>

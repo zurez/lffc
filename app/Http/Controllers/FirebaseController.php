@@ -21,10 +21,24 @@ class FirebaseController extends Controller
                 "e5mrjEIpnzM:APA91bFLKe4-ibTErh-S4u-IJuIwAG35yK7pIrKpvyHE3pdfFbt1MmN6L7yMKfNzymIM8wYWX0sO-JFrWdS75yf3ViogsAiyt1_0fjh43JQjFeBvT5nfSVaTdg2Oan99qHpFh8PsMa3t"
 
             ];
+        $title="New Hacks are added!";
+        $data=[
+            "image"=>
+                "https://s3-us-west-2.amazonaws.com/newlifehacks/banner_06_02.png",
+            "message"=>
+                "Please open app for new hacks.",
+            "AnotherActivity"=>
+                "True",
+            "title"=>
+                'New Hacks Are Added',
+            "onlyUpdate"=>
+                "false"
+        ];
 
         $delay_time=0;
         $flag=0;
         $limit=100;
+        dump($data);
         for ($i=0; $i <4; $i++) { 
         	$customers=Customers::where("ftoken","!=","")->skip($flag)->take($limit)->get();
 
@@ -34,8 +48,12 @@ class FirebaseController extends Controller
             foreach ($customers as $f) {
                 array_push($tokens,$f->ftoken);
             }
-            dump($tokens);
-        	$job= (new SendFirebaseNotifications($tokens))->delay($delay_time);
+            $tokens=[
+                "cuRZqiI-rjw:APA91bFItALnt2LuK5o76chTPPmW-DbgdbM5qxrU031_UPpbOxnH5YRXsoKZsHA_UqceE8zj2cAqVAye9CTT7dCCtniiXNTKL64VEsihVrBDJApughc6iEdlfHqnFDw0yIErKINGZ7sq",
+                "ec1NcpiTmfs:APA91bHHxcDXCNnHwiiaGrSBgE15kV3PBnkoI2yva9KAJzkRFbYdL-NoONYPxVMA_ZDBajz_F0ArxLzAu6jtLkMbBiKhooHe0POU43NI-OgGmdx5adukOQBHLfQhCDr0xBllqeWr32-E"
+
+            ];
+        	$job= (new SendFirebaseNotifications($tokens,$title,$data))->delay($delay_time);
         	$delay_time+=60;
         	$this->dispatch($job);
 
