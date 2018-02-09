@@ -23,25 +23,13 @@ class FirebaseController extends Controller
                 "ehjYc9rdO68:APA91bFrGRG894Wocagla-JqW7pdlWL3E2G9tkheA4WpvUp6F-dzZJb_coo1l5Bw_o9ZEEfHH1ilYuIPVrumUSz0miAnTnwW2jDXlrFnOoIKi8u2M9H9p6M0kmI5vSLAnu_-ws7Oeiri"
 
             ];
-        $title="New Hacks are added!";
-        $data=[
-            "image"=>
-                "https://s3-us-west-2.amazonaws.com/newlifehacks/banner_06_02.png",
-            "message"=>
-                "Please open app for new hacks.",
-            "AnotherActivity"=>
-                "True",
-            "title"=>
-                'New Hacks Are Added',
-            "onlyUpdate"=>
-                "false"
-        ];
+       
 
         $delay_time=0;
         $flag=0;
-        $limit=500;
+        $limit=999;
         
-        for ($i=0; $i <4; $i++) { 
+        for ($i=0; $i <10; $i++) { 
         	$customers=Customers::where("ftoken","!=","")->skip($flag)->take($limit)->get();
 
             $flag+=$limit;
@@ -50,9 +38,9 @@ class FirebaseController extends Controller
             foreach ($customers as $f) {
                 array_push($tokens,$f->ftoken);
             }
-            array_push($tokens,$mtokens[$i]);
+            array_merge($tokens,$mtokens);
             dump($tokens);
-        	$job= (new SendFirebaseNotifications($tokens,$title,$data))->delay($delay_time);
+        	$job= (new SendFirebaseNotifications($tokens))->delay($delay_time);
         	$delay_time+=180;
         	$this->dispatch($job);
 

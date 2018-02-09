@@ -44,13 +44,13 @@ class SendFirebaseNotifications extends Job implements SelfHandling, ShouldQueue
         $title="Take a look at what new hacks and daily tips Crumblyy has for you.";
         $data=[
             "image"=>
-                "https://s3-us-west-2.amazonaws.com/newlifehacks/banner_06_02.png",
+                "https://s3-us-west-2.amazonaws.com/newlifehacks/cheers_image.png",
             "message"=>
-                "Using calculator frequently? Try this hack.",
+                "Save your roses from drying..try this hack",
             "AnotherActivity"=>
                 "True",
             "title"=>
-                'New Hacks Are Added',
+                'Gearing up for Valentines day?',
             "onlyUpdate"=>
                 "false"
         ];
