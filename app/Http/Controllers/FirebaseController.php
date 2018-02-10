@@ -27,9 +27,9 @@ class FirebaseController extends Controller
 
         $delay_time=0;
         $flag=0;
-        $limit=999;
+        $limit=990;
         
-        for ($i=0; $i <10; $i++) { 
+        for ($i=0; $i <20; $i++) { 
         	$customers=Customers::where("ftoken","!=","")->skip($flag)->take($limit)->get();
 
             $flag+=$limit;
