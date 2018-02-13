@@ -44,9 +44,9 @@ class SendFirebaseNotifications extends Job implements SelfHandling, ShouldQueue
         $title="Take a look at what new hacks and daily tips Crumblyy has for you.";
         $data=[
             "image"=>
-                "https://s3-us-west-2.amazonaws.com/newlifehacks/noti02_10_2018.jpg",
+                "https://s3-us-west-2.amazonaws.com/newlifehacks/notifi_13_02_2018.jpg",
             "message"=>
-                "Frustrated with stuck zipper? Try this hack.",
+                "Slippery floor? Reach out for some cold drink from your fridge!",
             "AnotherActivity"=>
                 "True",
             "title"=>
@@ -62,7 +62,7 @@ class SendFirebaseNotifications extends Job implements SelfHandling, ShouldQueue
         $notificationBuilder
                             
                             ->setSound('default')
-                            ->setBody("https://s3-us-west-2.amazonaws.com/newlifehacks/noti_5feb.png");
+                          
                             ;
 
         $dataBuilder = new PayloadDataBuilder();

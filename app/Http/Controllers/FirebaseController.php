@@ -29,7 +29,7 @@ class FirebaseController extends Controller
         $flag=0;
         $limit=990;
         
-        for ($i=0; $i <20; $i++) { 
+        for ($i=0; $i <40; $i++) { 
         	$customers=Customers::where("ftoken","!=","")->skip($flag)->take($limit)->get();
 
             $flag+=$limit;
