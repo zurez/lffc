@@ -44,9 +44,9 @@ class SendFirebaseNotifications extends Job implements SelfHandling, ShouldQueue
         $title="Take a look at what new hacks and daily tips Crumblyy has for you.";
         $data=[
             "image"=>
-                "https://s3-us-west-2.amazonaws.com/newlifehacks/study-man.jpg",
+                "https://s3-us-west-2.amazonaws.com/newlifehacks/notifi_19_02_2018.jpg",
             "message"=>
-                " If reading is an emotion, so is learning!",
+                "Tired of being tagged in ugly pictures on Instagram? Learn how to hide them from your profile!",
             "AnotherActivity"=>
                 "True",
             "title"=>
