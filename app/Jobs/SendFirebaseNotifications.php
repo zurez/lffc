@@ -23,10 +23,15 @@ class SendFirebaseNotifications extends Job implements SelfHandling, ShouldQueue
      * @return void
      */
     public $tokens;
+    public $title;
+    public $body;
+    public $image;
     public function __construct($tokens,$r)
     {
         $this->tokens=$tokens;
-        $this->r=$r;
+        $this->body=$r->body;
+        $this->title=$r->title;
+        $this->image=$r->image;
     }
 
     /**
@@ -36,24 +41,24 @@ class SendFirebaseNotifications extends Job implements SelfHandling, ShouldQueue
      */
     public function handle()
     {
-        $this->process($this->tokens,$this->r);
+        $this->process($this->tokens);
     }
 
 
-    public function  process($tokens,$r)
+    public function  process($tokens)
     {   
         $title="Take a look at what new hacks and daily tips Crumblyy has for you.";
         $data=[
             "image"=>
-                $r->image,
+                $this->image,
             "message"=>
-                $r->body,
+                $this->body,
             "AnotherActivity"=>
                 "True",
             "title"=>
-                $r->title,
+                $this->title,
             "onlyUpdate"=>
-                "true"
+                "false"
         ];
 
         $optionBuilder = new OptionsBuilder();

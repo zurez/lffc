@@ -13,9 +13,7 @@ class FirebaseController extends Controller
 
     public function notify()
     {
-        return view("firebase.form")
-        ->with("title","Notification")
-        ;
+        return view("firebase.form");
     }
     public function post_notify(Request $r)
 {	    $mtokens=[
@@ -41,8 +39,8 @@ class FirebaseController extends Controller
                 array_push($tokens,$f->ftoken);
             }
             array_merge($tokens,$mtokens);
-            dump($tokens);
-        	$job= (new SendFirebaseNotifications($mtokens,$r))->delay($delay_time);
+            // dump($tokens);
+        	$job= (new SendFirebaseNotifications($tokens,$r))->delay($delay_time);
         	$delay_time+=90;
         	$this->dispatch($job);
 
