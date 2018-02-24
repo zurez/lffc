@@ -3,7 +3,7 @@
 
 	{!! Form::open(array("url"=>url("notify"),"method"=>"POST",
 	"class"=>"form ")) !!}
-
+	<input type="number" name="batch" placeholder="Batch Size" value="20" class="form-control"><br>
 	<input type="text" name="image" placeholder="Image URL" class="form-control"><br>
 	<input type="text" name="title" placeholder="Title of Notification" class="form-control"><br>
 	<textarea type="text" name="body" placeholder="Message Body"
