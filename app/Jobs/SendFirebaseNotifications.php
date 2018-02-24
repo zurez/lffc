@@ -58,9 +58,10 @@ class SendFirebaseNotifications extends Job implements SelfHandling, ShouldQueue
             "title"=>
                 $this->title,
             "onlyUpdate"=>
-                "true"
+                "false"
         ];
 
+        Log::info($data);
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60*20);
 
