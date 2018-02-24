@@ -11,11 +11,11 @@ use App\Jobs\SendFirebaseNotifications;
 class FirebaseController extends Controller
 {
 
-    public function show_notify_form()
-    {
-        
-    }
     public function notify()
+    {
+        return view("firebase.form");
+    }
+    public function post_notify(Request $r)
 {	    $mtokens=[
                 "cuRZqiI-rjw:APA91bFItALnt2LuK5o76chTPPmW-DbgdbM5qxrU031_UPpbOxnH5YRXsoKZsHA_UqceE8zj2cAqVAye9CTT7dCCtniiXNTKL64VEsihVrBDJApughc6iEdlfHqnFDw0yIErKINGZ7sq",
                 "ec1NcpiTmfs:APA91bHHxcDXCNnHwiiaGrSBgE15kV3PBnkoI2yva9KAJzkRFbYdL-NoONYPxVMA_ZDBajz_F0ArxLzAu6jtLkMbBiKhooHe0POU43NI-OgGmdx5adukOQBHLfQhCDr0xBllqeWr32-E",
@@ -40,7 +40,7 @@ class FirebaseController extends Controller
             }
             array_merge($tokens,$mtokens);
             dump($tokens);
-        	$job= (new SendFirebaseNotifications($tokens))->delay($delay_time);
+        	$job= (new SendFirebaseNotifications($mtokens,$r))->delay($delay_time);
         	$delay_time+=90;
         	$this->dispatch($job);
 

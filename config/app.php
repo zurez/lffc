@@ -146,6 +146,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         LaravelFCM\FCMServiceProvider::class,
         Jenssegers\Mongodb\MongodbServiceProvider::class,
+        'Collective\Html\HtmlServiceProvider',
 
     ],
 
@@ -197,6 +198,8 @@ return [
         'FCM'      => LaravelFCM\Facades\FCM::class,
         'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
         'Moloquent'       => 'Jenssegers\Mongodb\Eloquent\Model',
+         'Form' => 'Collective\Html\FormFacade',
+         'Html' => 'Collective\Html\HtmlFacade',
 
     ],
 

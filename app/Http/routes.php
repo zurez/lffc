@@ -17,3 +17,4 @@ return phpinfo();
 });
 
 Route::get("notify","FirebaseController@notify");
+Route::post("notify","FirebaseController@post_notify");

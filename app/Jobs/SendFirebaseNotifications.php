@@ -23,9 +23,10 @@ class SendFirebaseNotifications extends Job implements SelfHandling, ShouldQueue
      * @return void
      */
     public $tokens;
-    public function __construct($tokens)
+    public function __construct($tokens,$r)
     {
         $this->tokens=$tokens;
+        $this->r=$r;
     }
 
     /**
@@ -35,22 +36,22 @@ class SendFirebaseNotifications extends Job implements SelfHandling, ShouldQueue
      */
     public function handle()
     {
-        $this->process($this->tokens);
+        $this->process($this->tokens,$this->r);
     }
 
 
-    public function  process($tokens)
+    public function  process($tokens,$r)
     {   
         $title="Take a look at what new hacks and daily tips Crumblyy has for you.";
         $data=[
             "image"=>
-                "https://s3-us-west-2.amazonaws.com/newlifehacks/notifi_19_02_2018.jpg",
+                $r->image,
             "message"=>
-                "Tired of being tagged in ugly pictures on Instagram? Learn how to hide them from your profile!",
+                $r->body,
             "AnotherActivity"=>
                 "True",
             "title"=>
-                'Hack of the day',
+                $r->title,
             "onlyUpdate"=>
                 "false"
         ];
