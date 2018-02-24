@@ -47,7 +47,7 @@ class FirebaseController extends Controller
             }
             // array_merge($tokens,$mtokens);
             // dump($i,$batch_size);
-        	$job= (new SendFirebaseNotifications($mtokens,$r))->delay($delay_time);
+        	$job= (new SendFirebaseNotifications($tokens,$r))->delay($delay_time);
         	$delay_time+=90;
         	$this->dispatch($job);
 
