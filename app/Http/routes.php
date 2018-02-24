@@ -18,3 +18,5 @@ return phpinfo();
 
 Route::get("notify","FirebaseController@notify");
 Route::post("notify","FirebaseController@post_notify");
+
+Route::get("hack/edit/{id}","HackController@edit_hack");

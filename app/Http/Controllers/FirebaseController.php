@@ -13,7 +13,9 @@ class FirebaseController extends Controller
 
     public function notify()
     {
-        return view("firebase.form");
+        return view("firebase.form")
+        ->with("title","Notification")
+        ;
     }
     public function post_notify(Request $r)
 {	    $mtokens=[
