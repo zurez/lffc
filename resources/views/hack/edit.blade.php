@@ -13,12 +13,14 @@
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Hack Title</label>
-                                                    <input type="text" class="form-control" name="title" id="title">
+                                                    <input type="text" class="form-control" name="title" id="title" value="{{$hack->title}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Category</label>
+                                                    <input type="hidden"
+                                                     id="cat" value="{{$hack->category}}">
                                                     <select class="form-control" name="category" id="category">
                                                        <!--  <option value="tech">Technology Tricks</option>
                                                         <option value="food">Food & Drinks</option>
@@ -42,7 +44,15 @@
                                             <div class="col-md-12">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Video URL</label>
-                                                    <input type="text" class="form-control" name="videos" id="videos">
+                                                    <?php
+                                                    $vid="";
+                                                    foreach($hack->videos as $v){
+                                                        $vid.=$v.",";
+                                                    }
+                                                    ?>
+                                                    <input
+                                                    value="{{$vid}}"
+                                                     type="text" class="form-control" name="videos" id="videos">
                                                 </div>
                                             </div>
                                         </div>
@@ -50,7 +60,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label"> Hack text</label>
-                                                    <textarea class="form-control" rows="5" name="body" id="body"></textarea>
+                                                    <textarea class="form-control" rows="5" name="body" id="body">{{$hack->body}}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -58,7 +68,9 @@
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Mobile friendly link</label>
-                                                    <input type="text" class="form-control" id="external_link" name="external_link">
+                                                    <input type="text" class="form-control"
+                                                    value="{{$hack->external_link}}" 
+                                                     id="external_link" name="external_link">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -70,20 +82,21 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <input type="hidden" name="images" id="images" value="[]">
+                                                    <input type="hidden" name="images" id="images" value="">
                                                     <Label>Upload Image
                                                     <input type="file" name="img[]" class="file" id="vi" multiple="multiple">
                                                     </Label>
                                                     <span class="hackimages" id="image_preview">
                                                         <!-- <img class="hackimage_preview img-responsive" src=""> -->
+                                                        <?php $j=0;
+                                           
+                                            ?>
+                                            @foreach($hack->images as $i)
+                                            <img src="{{$i}}" style="height:50px;width:auto;" onclick="remove_img('{{$i}}','{{$j}}')" id="img_{{$j}}">
+                                            <?php $j++;?>
+                                            @endforeach
                                                     </span>
-                                               <!--      <div class="input-group">
-                                                      <span class="input-group-addon"><i class="material-icons">image</i></span>
-                                                      <input type="text" class="form-control" disabled placeholder="Upload Image">
-                                                      <span class="input-group-btn">
-                                                        <button class="browse btn btn-info" type="button"><i class="material-icons">image</i> Browse</button>
-                                                      </span>
-                                                    </div> -->
+                                              
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -108,7 +121,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <input type="hidden" id="token" name="token">
+                                        <div class="row">
+
+                                        </div>
+                                        <input type="hidden" id="token" name="token" value="">
+                                        <input type="hidden" name="_id" value="{{$hack->_id}}">
                                         <input type="hidden" name="approved" id="approved">
                                         <input type="hidden" name="content_partner" id="content_partner">
                                         <div class="clearfix"></div>
@@ -119,6 +136,7 @@
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" id="tstore">
 @stop
 @section("script")
 <script type="text/javascript">
@@ -127,8 +145,18 @@
     var $hack=[];
    	$hack["images"]=[];
     // console.log(h);
-    var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWQgWnVyZXogVHViYSIsImF1dGhfcHJvdmlkZXIiOiJnb29nbGUiLCJhY2Nlc3NfdG9rZW4iOiIxMjM0NTY2ODkiLCJlbWFpbCI6Inp1cmV6NHUrdGVzdDJAZ21haWwuY29tIiwiX2lkIjoiNWEyZjllMWI2ODY1YjE0ZDMxZjdkZWQzIiwiaWF0IjoxNTEzMDcwMTA3fQ.0fYvmncR8OC9ERlgNIo1knKcTW-jvJrkGX8j1srd1Zc";
-
+    $imgs=JSON.stringify("{{implode(",",$hack->images)}}");
+    $("#images").val($imgs);
+    function remove_img($img,$j) {
+        $curr=JSON.parse($('#images').val());
+        console.log("CURR",$curr);
+        $index=$curr.indexOf($img);
+        delete $curr[$index];
+        $curr=JSON.stringify($curr);
+        $("#img_"+$j).hide();
+        $('#images').val($curr);
+        alert("Image removed");
+    }
     function saveimage($data) {
         image_url="";
         url="http://"+host+"/image/save";
@@ -160,12 +188,14 @@
             },
             success:function(r){
                 options="";
+                selected_hack=$("#cat").val();
 
                 for (var i = a=r.length - 1; i >= 0; i--) {
                     a=r[i];
-                    t=`<option value="`+a._id;
-                    if ($hack.category_id==a._id) {
-                        t+=` selected="selected" `
+                      t=`<option value="`+a._id+`" `;
+                    if (a.title=="{{$hack->category}}") {
+                        alert(a.title);
+                        t+=`selected=selected`
                     }
                     t+=`">`+a.title+`</option>
                     `;
@@ -216,7 +246,7 @@
                     z=r[i];
                     t.push(z.tag);
                 }
-                //console.log("T",t);
+                console.log("T",JSON.stringify(t));
                 $('#tstore').val(JSON.stringify(t));
                 $('#vt').attr("disabled",false);
                 tags=r;
@@ -245,39 +275,42 @@
     }
     $(document).ready(function(){
         
-
-        for(var key in $hack){
-            console.log("value",$hack[key]);
-            $("[name='"+key+"']").val($hack[key]);
-        }
-
-        imghtml="";
-        if ($hack.images.length>0) {
-            for (var i = $hack.images.length - 1; i >= 0; i--) {
-                image_url=$hack.images[i];
-                if (image_url!="") {
-                    imghtml+=`
-                    <img src="`+image_url+`"style="height: 150px; width: auto;">
-                    `;
-                }
-            }
-        }
-         $("#image_preview").append(imghtml);
-
-
         $('#token').val(token);
         get_categories();
         get_tags();
         get_partners();
 
+       
+
+        imghtml="";
+        // if ($hack.images.length>0) {
+        //     for (var i = $hack.images.length - 1; i >= 0; i--) {
+        //         image_url=$hack.images[i];
+        //         if (image_url!="") {
+        //             imghtml+=`
+        //             <img src="`+image_url+`"style="height: 150px; width: auto;">
+        //             `;
+        //         }
+        //     }
+        // }
+         $("#image_preview").append(imghtml);
+
+
+      
+        
         tags=$('#tstore').val();
-        tags="[]";
-     
+        console.log("TAGS",tags);
+        populate=[];
+        @foreach($hack->tags as $t)
+            populate.push("{{$t}}");
+        @endforeach
         ms=$('#vt').magicSuggest({
             placeholder: 'Enter tag',
             data:JSON.parse(tags),
-            resultAsString: true
+            resultAsString: true,
+            value:populate
         });
+
 
         $(ms).on('selectionchange', function(){
                 newvalue=this.getSelection();
@@ -343,8 +376,11 @@
                $('#content_partner').val($vc);
                $('#images').val(JSON.stringify(im.split(",")));
 
-
-               $('#videos').val("["+$('#videos').val()+"]");
+               if ($('#videos').val().indexOf('[') == -1)
+                {
+                  // $('#videos').val("['"+$('#videos').val()+"']");
+                }
+                
                $form=$('#addhackform').serialize();
                // f=new FormData();
                // f.append("title",$('#title').val());
@@ -365,7 +401,7 @@
                // f.append("",$('#').val());f.append("",$('#').val());
                // f.append("",$('#').val());
                // f.append("",$('#').val());
-               url="http://"+host+"/contents/submit";
+               url="http://"+host+"/contents/edit";
                //console.log($form)
                 $.ajax({
                     type:"POST",
@@ -374,10 +410,12 @@
                     data:$form,
                     success:function(r){
                         //console.log(r)
+                        alert("Edit Saved");
+                        location.reload();
                         
                     },
                     error:function(e){
-                        //console.log(e)
+                        console.log(e)
                         alert("Cannot connect to server")
                     }
                 })

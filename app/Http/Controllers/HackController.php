@@ -13,7 +13,11 @@ class HackController extends Controller
 {
     public function edit_hack($id)
     {
+    	$hack=Hack::find($id);
+    	// dd($hack);
         return view("hack.edit")
-        ->with("title","Edit Hack");
+        ->with("title","Edit Hack")
+        ->with("hack",$hack)
+        ;
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Hack extends Model
+class Hack extends Eloquent
 {
     //
     protected $collection="hacks";

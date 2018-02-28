@@ -25,7 +25,8 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
     <script type="text/javascript">
-        var host="localhost:8080"
+        var host="localhost:1991"
+         var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWQgWnVyZXogVHViYSIsImF1dGhfcHJvdmlkZXIiOiJnb29nbGUiLCJhY2Nlc3NfdG9rZW4iOiIxMjM0NTY2ODkiLCJlbWFpbCI6Inp1cmV6NHUrdGVzdDJAZ21haWwuY29tIiwiX2lkIjoiNWEyZjllMWI2ODY1YjE0ZDMxZjdkZWQzIiwiaWF0IjoxNTEzMDcwMTA3fQ.0fYvmncR8OC9ERlgNIo1knKcTW-jvJrkGX8j1srd1Zc";
     </script>
 </head>
 
@@ -254,9 +255,9 @@
 <script src="{{asset('js/magic.js')}}"></script>
 
 <!-- select author -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3{{asset('js/bootstrap-select.min.js')}}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4{{asset('js/bootstrap-select.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
 @yield("script")
 
