@@ -25,8 +25,8 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
     <script type="text/javascript">
-        var host="localhost:1991"
-         var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWQgWnVyZXogVHViYSIsImF1dGhfcHJvdmlkZXIiOiJnb29nbGUiLCJhY2Nlc3NfdG9rZW4iOiIxMjM0NTY2ODkiLCJlbWFpbCI6Inp1cmV6NHUrdGVzdDJAZ21haWwuY29tIiwiX2lkIjoiNWEyZjllMWI2ODY1YjE0ZDMxZjdkZWQzIiwiaWF0IjoxNTEzMDcwMTA3fQ.0fYvmncR8OC9ERlgNIo1knKcTW-jvJrkGX8j1srd1Zc";
+        var host="54.187.130.182"
+         var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNydW1ibHl5QGdtYWlsLmNvbSIsIl9pZCI6IjVhMzkxNzVjYjgwZjE4MjdjZmVhMWI1MCIsImlhdCI6MTUxNDI4Mzg5N30.Q4F_f9QNKaBk9aAvml_03aESnaqUJT8B_vFv0QB4NcM";
     </script>
 </head>
 
