@@ -36,28 +36,28 @@
                                                         <option value="HCK_TXT"
                                                         <?php
                                                             if ($hack->hack_type=="HCK_TXT") {
-                                                                echo "selected='selected'";
+                                                                echo "selected";
                                                             }
                                                         ?>
                                                         >Text Hack</option>
                                                         <option value="HCK_IMG_TXT"
                                                         <?php
                                                             if ($hack->hack_type=="HCK_IMG_TXT") {
-                                                                echo "selected='selected'";
+                                                                echo "selected";
                                                             }
                                                         ?>
                                                         >Text & Image Hack</option>
                                                         <option value="HCK_IMG" 
                                                             <?php
                                                             if ($hack->hack_type=="HCK_IMG") {
-                                                                echo "selected='selected'";
+                                                                echo "selected";
                                                             }
                                                         ?>
                                                         >Image Hack</option>
                                                         <option value="HCK_VID"
                                                         <?php
                                                             if ($hack->hack_type=="HCK_VID") {
-                                                                echo "selected='selected'";
+                                                                echo "selected";
                                                             }
                                                         ?>
                                                         >Video & Text Hack</option>
