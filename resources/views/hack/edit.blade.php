@@ -120,12 +120,19 @@
                                             <div class="col-md-6">
                                                 <div class="togglebutton">
                                                     <label>
-                                                        <input type="checkbox" checked="" id="publish">
+                                                        <input type="checkbox" 
+
+                                                        <?php
+                                                            if ($hack->approved==true) {
+                                                                echo "checked='checked'";
+                                                            }
+                                                        ?>
+                                                         id="publish" name="approved">
                                                         Publish
                                                     </label>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                            {{-- <div class="col-md-12">
                                                 <h4 class="title pt-3">Assign Content Partner</h4>
                                                 <div class="checkbox">
                                                     <label>
@@ -137,7 +144,14 @@
                                                     <!-- <options>Select partner</options> -->
                                                   </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
+                                             <div class="col-md-12">
+                                                <h4 class="title pt-3">Author
+                                                <small>{{$hack->author}}</small>
+                                                </h4>
+                                              
+                                            </div> 
+
                                         </div>
                                         <div class="row">
 
@@ -157,6 +171,7 @@
                     <input type="hidden" id="tstore">
 @stop
 @section("script")
+<input type="hidden" id="content_partner" value="{{$hack->aut}}">
 <script type="text/javascript">
     var images;
     var tags;
