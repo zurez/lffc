@@ -1,5 +1,28 @@
 @extends("common.default")
 @section("content")
+<?php
+$hack_type="";
+switch ($hack->hack_type) {
+    case 'HCK_TXT':
+        $hack_type="Text Hack";
+        break;
+    case 'HCK_IMG':
+        # code...
+        $hack_type="Image Hack";
+        break;
+    case 'HCK_IMG_TXT':
+        # code...
+        $hack_type="Text & Image Hack";
+        break;
+    case 'HCK_VID':
+        # code...
+        $hack_type="Video Hack";
+        break;
+    default:
+        # code...
+        break;
+}
+?>
 <div class="row">
                         <div class="col-md-12">
                             <div class="card">
@@ -30,7 +53,10 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
-                                                    <label class="control-label">Hack Type</label>
+                                                    <label class="control-label">Hack Type ({{$hack_type}})
+
+
+                                                    </label>
                                                     {{-- <h1>{{$hack->hack_type}}</h1> --}}
                                                     <select class="form-control" name="hack_type" id="hack_type">
                                                         <option value="HCK_TXT"
