@@ -32,10 +32,28 @@
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Hack Type</label>
                                                     <select class="form-control" name="hack_type" id="hack_type">
-                                                        <option value="HCK_TXT">Text Hack</option>
-                                                        <option value="HCK_IMG_TXT">Text & Image Hack</option>
+                                                        <option value="HCK_TXT"
+                                                        <?php
+                                                            if ($hack->hack_type=="HCK_TXT") {
+                                                                echo "selected='selected'";
+                                                            }
+                                                        ?>
+                                                        >Text Hack</option>
+                                                        <option value="HCK_IMG_TXT"
+                                                        <?php
+                                                            if ($hack->hack_type=="HCK_IMG_TXT") {
+                                                                echo "selected='selected'";
+                                                            }
+                                                        ?>
+                                                        >Text & Image Hack</option>
                                                         <option value="HCK_IMG">Image Hack</option>
-                                                        <option value="HCK_VID">Video & Text Hack</option>
+                                                        <option value="HCK_VID"
+                                                        <?php
+                                                            if ($hack->hack_type=="HCK_VID") {
+                                                                echo "selected='selected'";
+                                                            }
+                                                        ?>
+                                                        >Video & Text Hack</option>
                                                     </select>
                                                 </div>
                                             </div>
