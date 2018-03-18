@@ -31,6 +31,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Hack Type</label>
+                                                    <h1>{{$hack->hack_type}}</h1>
                                                     <select class="form-control" name="hack_type" id="hack_type">
                                                         <option value="HCK_TXT"
                                                         <?php
