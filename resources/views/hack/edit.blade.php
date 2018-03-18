@@ -31,7 +31,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Hack Type</label>
-                                                    <h1>{{$hack->hack_type}}</h1>
+                                                    {{-- <h1>{{$hack->hack_type}}</h1> --}}
                                                     <select class="form-control" name="hack_type" id="hack_type">
                                                         <option value="HCK_TXT"
                                                         <?php
@@ -47,7 +47,13 @@
                                                             }
                                                         ?>
                                                         >Text & Image Hack</option>
-                                                        <option value="HCK_IMG">Image Hack</option>
+                                                        <option value="HCK_IMG" 
+                                                            <?php
+                                                            if ($hack->hack_type=="HCK_IMG") {
+                                                                echo "selected='selected'";
+                                                            }
+                                                        ?>
+                                                        >Image Hack</option>
                                                         <option value="HCK_VID"
                                                         <?php
                                                             if ($hack->hack_type=="HCK_VID") {
@@ -228,7 +234,7 @@
                     a=r[i];
                       t=`<option value="`+a._id+`" `;
                     if (a.title=="{{$hack->category}}") {
-                        alert(a.title);
+                        
                         t+=`selected=selected`
                     }
                     t+=`">`+a.title+`</option>
