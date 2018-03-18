@@ -1,7 +1,7 @@
 @extends("common.default")
 @section("content")
 <?php
-$hack_type="";
+$hack_type="--";
 switch ($hack->hack_type) {
     case 'HCK_TXT':
         $hack_type="Text Hack";
