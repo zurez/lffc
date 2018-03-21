@@ -420,8 +420,9 @@ switch ($hack->hack_type) {
 
         // url = 'http://52.38.92.234:8080';
         //console.log(url)
-        $("body").on("change","#category_id",function(){
+        $("#category_id").change(function(){
             title=$(this).attr("title");
+            
             $("#category_id").val(title);
 
         });
