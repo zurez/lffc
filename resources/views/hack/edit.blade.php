@@ -423,7 +423,7 @@ switch ($hack->hack_type) {
         $("#category_id").change(function(){
             title=$(this).attr("title");
 
-            $("#category_id").val(title);
+            $("#category").val(title);
 
         });
         $('#save').click(function(e){
