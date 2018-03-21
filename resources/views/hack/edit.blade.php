@@ -423,7 +423,7 @@ switch ($hack->hack_type) {
         $("body").on("change","#category_id",function(){
             console.log($(this).val())
             title=$(this).attr("rel-title");
-            console.log(title) 
+            console.log(title)  
             $("#category").val(title);
 
         });
