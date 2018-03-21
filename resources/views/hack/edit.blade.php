@@ -266,7 +266,7 @@ switch ($hack->hack_type) {
                     options+=t;
 
                 }
-                $('#category').append(options);
+                $('#category_id').append(options);
             }
         })
     }
@@ -422,7 +422,7 @@ switch ($hack->hack_type) {
         //console.log(url)
         $("#category_id").change(function(){
             title=$(this).attr("title");
-             
+
             $("#category_id").val(title);
 
         });
