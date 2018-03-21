@@ -174,7 +174,7 @@ switch ($hack->hack_type) {
                                                     </label>
                                                 </div>
                                                 <div class="row-fluid">
-                                                  <select  id="partners" name="partners">
+                                                  <select  id="partners" name="author">
                                                     <!-- <options>Select partner</options> -->
                                                   </select>
                                                 </div>
@@ -287,7 +287,7 @@ switch ($hack->hack_type) {
                     a=r[i];
 
                     options+=`
-                        <option value=`+a.user_id+`>`+a.name+`</option>
+                        <option rel-author="`+a.user_id+`" value=`+a.name+`>`+a.name+`</option>
                     `;
 
                 }
