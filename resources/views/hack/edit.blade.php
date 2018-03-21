@@ -43,11 +43,9 @@ switch ($hack->hack_type) {
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Category</label>
                                                     <input type="hidden"
-                                                     id="cat" value="{{$hack->category}}">
-                                                    <select class="form-control" name="category" id="category">
-                                                       <!--  <option value="tech">Technology Tricks</option>
-                                                        <option value="food">Food & Drinks</option>
-                                                        <option value="health">Health & Fitness</option> -->
+                                                     id="category" name="category" value="{{$hack->category}}">
+                                                    <select class="form-control" name="category_id" id="category_id">
+                                                       
                                                     </select>
                                                 </div>
                                             </div>
@@ -258,7 +256,7 @@ switch ($hack->hack_type) {
 
                 for (var i = a=r.length - 1; i >= 0; i--) {
                     a=r[i];
-                      t=`<option value="`+a._id+`" `;
+                      t=`<option title="`+a.title+`" value="`+a._id+`" `;
                     if (a.title=="{{$hack->category}}") {
                         
                         t+=`selected=selected`
@@ -422,6 +420,11 @@ switch ($hack->hack_type) {
 
         // url = 'http://52.38.92.234:8080';
         //console.log(url)
+        $("body").on("change","#category_id",function(){
+            title=$(this).attr("title");
+            $("#category_id").val(title);
+
+        });
         $('#save').click(function(e){
             e.preventDefault()
                /*SERIALIZE WONT WORK*/
@@ -448,25 +451,7 @@ switch ($hack->hack_type) {
                 }
                 
                $form=$('#addhackform').serialize();
-               // f=new FormData();
-               // f.append("title",$('#title').val());
-               // f.append("category",$('#category').val());
-               // f.append("hack_type",$('#hack_type').val());
-               // f.append("videos",$('#videos').val());
-               // f.append("body",$('#body').val());
-               // f.append("external_link",$('#external_link').val());
-               // f.append("tags",$('#tags').val());
-               // f.append("images",$('#images').val());
-               
-               // f.append("approved",$publish);
-               // f.append("token",token);
-               // f.append("",$('#').val());
-               // f.append("",$('#').val());
-               // f.append("",$('#').val());
-               // f.append("",$('#').val());
-               // f.append("",$('#').val());f.append("",$('#').val());
-               // f.append("",$('#').val());
-               // f.append("",$('#').val());
+          
                url="http://"+host+"/contents/edit";
                //console.log($form)
                 $.ajax({
