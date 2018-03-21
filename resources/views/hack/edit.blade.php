@@ -96,7 +96,10 @@ switch ($hack->hack_type) {
                                                     <?php
                                                     $vid="";
                                                     foreach($hack->videos as $v){
-                                                        $vid.=$v.",";
+                                                        if (!empty($v)) {
+                                                            $vid.=$v.",";
+                                                        }
+                                                        
                                                     }
                                                     ?>
                                                     <input
