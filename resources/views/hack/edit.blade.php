@@ -252,7 +252,7 @@ switch ($hack->hack_type) {
             },
             success:function(r){
                 options="";
-                selected_hack=$("#cat").val();
+                selected_hack=$("#category").val();
 
                 for (var i = a=r.length - 1; i >= 0; i--) {
                     a=r[i];
@@ -422,7 +422,7 @@ switch ($hack->hack_type) {
         //console.log(url)
         $("body").on("change","#category_id",function(){
             console.log($(this).val())
-            title=$(this).attr("rel-title");
+            title=$(this).find("option:selected").attr('rel-title') 
             console.log(title)  
             $("#category").val(title);
 
