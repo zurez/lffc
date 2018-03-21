@@ -256,7 +256,7 @@ switch ($hack->hack_type) {
 
                 for (var i = a=r.length - 1; i >= 0; i--) {
                     a=r[i];
-                      t=`<option title="`+a.title+`" value="`+a._id+`" `;
+                      t=`<option rel-title="`+a.title+`" value="`+a._id+`" `;
                     if (a.title=="{{$hack->category}}") {
                         
                         t+=`selected=selected`
@@ -422,8 +422,8 @@ switch ($hack->hack_type) {
         //console.log(url)
         $("body").on("change","#category_id",function(){
             console.log($(this).val())
-            title=$(this).attr("title");
-
+            title=$(this).attr("rel-title");
+            console.log(title)
             $("#category").val(title);
 
         });
