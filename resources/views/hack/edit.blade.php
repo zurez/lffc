@@ -166,7 +166,7 @@ switch ($hack->hack_type) {
                                                     </label>
                                                 </div>
                                             </div>
-                                            {{-- <div class="col-md-12">
+                                            <div class="col-md-12">
                                                 <h4 class="title pt-3">Assign Content Partner</h4>
                                                 <div class="checkbox">
                                                     <label>
@@ -178,7 +178,7 @@ switch ($hack->hack_type) {
                                                     <!-- <options>Select partner</options> -->
                                                   </select>
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                              <div class="col-md-12">
                                                 <h4 class="title pt-3">Author
                                                 <small>{{$hack->author}}</small>
