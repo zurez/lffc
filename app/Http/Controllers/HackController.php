@@ -214,7 +214,7 @@ class HackController extends Controller
 
     	$t=new Tag;
     	$t->tag=$tag;
-    	$r->save();
-
+    	$t->save();
+    	return redirect()->back()->with('success', 'Tag Saved');  
     }
 }
