@@ -80,9 +80,20 @@ class HackController extends Controller
     	return view("hack.reports")
     	->with("shacks",$ret);
 
-    	return $ret;
+    	;
     }
 
+    public function hack_report_view($hack_id)
+    {
+    	$hack_id=new MongoDB\BSON\ObjectId($hack_id);
+    	$reports=ReportedHack::whereRaw(["hack_id"=>$hack_id])
+    	->limit(50)
+    	->get();
+    	
+    	return view("hack.report_single")
+    	->with("shacks",$reports);
+
+    }
     public function resolve_hack($hack_id)
     {
     	$hack_id=new MongoDB\BSON\ObjectId($hack_id);

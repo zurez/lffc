@@ -23,7 +23,9 @@ Route::group(["prefix"=>"hack"],function(){
 	Route::get("edit/{id}","HackController@edit_hack");
 	Route::get("add","HackController@add_hack");
 	Route::get("reports","HackController@reported_hack");
+	Route::get("report/view/{hack_id}","HackController@hack_report_view");
 	Route::get("special","HackController@special_hack");
 	Route::get("ownership/{type}","HackController@ownership_hack");
 	Route::get("resolve/{type}","HackController@resolve_hack");
+
 });

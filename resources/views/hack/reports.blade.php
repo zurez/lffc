@@ -27,6 +27,7 @@
  						</td>
  						<td><a href="{{url("hack/edit",$shack->hack->_id)}}" target="_blank">Edit</a>
  						<a href="{{url("hack/resolve",$shack->hack->_id)}}" target="_blank">Resolve</a>
+ 						<a href="{{url("hack/report/view",$shack->hack->_id)}}" target="_blank">View</a>
  						</td>
  					</tr>
  					@endif
