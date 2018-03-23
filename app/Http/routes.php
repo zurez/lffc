@@ -25,4 +25,5 @@ Route::group(["prefix"=>"hack"],function(){
 	Route::get("reports","HackController@reported_hack");
 	Route::get("special","HackController@special_hack");
 	Route::get("ownership/{type}","HackController@ownership_hack");
+	Route::get("resolve/{type}","HackController@resolve_hack");
 });

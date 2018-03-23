@@ -9,7 +9,10 @@ use App\Http\Controllers\Controller;
 use App\Hack;
 use App\SpecialHack;
 use App\Partners;
+use App\ReportedHack;
 use Carbon;
+use DB;
+use MongoDB;
 
 class HackController extends Controller
 {
@@ -50,8 +53,43 @@ class HackController extends Controller
     public function reported_hack()
     {
     	# code...
+    	$rps=ReportedHack::where("status","active")->
+    	get();
+
+    	$kv=[];
+
+    	foreach ($rps as $r) {
+    		// dump($r->hack_id->oid);
+    		try {
+    			$kv[(string) new MongoDB\BSON\ObjectId($r->hack_id)]+=1;
+    		} catch (\Exception $e) {
+    			$kv[(string) new MongoDB\BSON\ObjectId($r->hack_id)]=1;
+    		}
+    	}
+    
+    	$ret=[];
+    	foreach ($kv as $key=>$value) {
+    		$temp=(object)array();
+    		$hack_id=new MongoDB\BSON\ObjectId($key);
+    		
+    		$hack=Hack::whereRaw(['_id' =>$hack_id])->first();
+    		$temp->hack=$hack;
+    		$temp->count=$value;
+    		array_push($ret,$temp);
+    	}
+    	return view("hack.reports")
+    	->with("shacks",$ret);
+
+    	return $ret;
     }
 
+    public function resolve_hack($hack_id)
+    {
+    	$hack_id=new MongoDB\BSON\ObjectId($hack_id);
+    	ReportedHack::whereRaw(["hack_id"=>$hack_id])
+    	->update(["status"=>"resolved"]);
+    	return "Resolved";
+    }
     public function ownership_hack($type)
     {
     	$data=array();
@@ -62,7 +100,16 @@ class HackController extends Controller
     			->orWhere("author",null)
     			->where("deleted",false)
     			->where("approved",true)
+    			
     			->get();
+    			// foreach ($data as $d) {
+    			// 	# code...
+    			// 	if (!empty($d->reports)) {
+    			// 		# code...
+    			// 		dump($d->reports);
+    			// 	}
+    				
+    			// }return;
     			break;
     		case 'admin_draft':
     			# code...

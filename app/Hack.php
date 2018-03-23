@@ -11,6 +11,6 @@ class Hack extends Eloquent
 
     public function reports()
     {
-    	return $this->belongsToMany("App\ReportedHack","hack_id","_id");
+    	return $this->hasMany("App\ReportedHack","hack_id","_id");
     }
 }
