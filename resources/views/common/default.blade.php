@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.css"/>
     <script type="text/javascript">
         var host="54.187.130.182"
          var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNydW1ibHl5QGdtYWlsLmNvbSIsIl9pZCI6IjVhMzkxNzVjYjgwZjE4MjdjZmVhMWI1MCIsImlhdCI6MTUxNDI4Mzg5N30.Q4F_f9QNKaBk9aAvml_03aESnaqUJT8B_vFv0QB4NcM";
@@ -62,13 +63,13 @@
                 </li>
                 <ul class="sub-menu collapse" id="products">
                     <li>
-                        <a class="inner_link" href="./view_hacks">
+                        <a class="inner_link" href="{{url('hack/ownership','admin_published')}}">
                             <i class="material-icons">view_carousel</i>
                             <p>Admin Hacks</p>
                         </a>
                     </li>
                     <li>
-                        <a class="inner_link" href="./admin_drafts">
+                        <a class="inner_link" href="{{url('hack/ownership',"admin_draft")}}">
                             <i class="material-icons">view_carousel</i>
                             <p>Admin Drafts</p>
                         </a>
@@ -86,13 +87,13 @@
                         </a>
                     </li>
                     <li>
-                        <a class="inner_link" href="./partner_hacks">
+                        <a class="inner_link" href="{{url('hack/ownership','partner_published')}}">
                             <i class="material-icons">view_carousel</i>
                             <p>Partner Published</p>
                         </a>
                     </li>
                     <li>
-                        <a class="inner_link" href="./partner_drafts">
+                        <a class="inner_link" href="{{url('hack/ownership','partner_draft')}}">
                             <i class="material-icons">view_carousel</i>
                             <p>Partner Drafts</p>
                         </a>
@@ -101,7 +102,7 @@
                 <!-- sub menu style -->
 
                 <li>
-                    <a href="./reports">
+                    <a href="{{url('hack/reports')}}">
                         <i class="material-icons">report</i>
                         <p>Reports</p>
                     </a>
@@ -113,13 +114,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./special_hack">
+                    <a href="{{url('hack/add/special')}}    ">
                         <i class="material-icons">star_rate</i>
                         <p title="Banners, Hack of the day etc">Add Special Hacks</p>
                     </a>
                 </li>
                 <li>
-                    <a href="./view_special_hacks">
+                    <a href="{{url('hack/special')}}">
                         <i class="material-icons">stars</i>
                         <p title="Banners, Hack of the day etc">View Special Hacks</p>
                     </a>
@@ -239,6 +240,7 @@
 
 <script src="{{asset('js/jquery.2.2.4.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.js"></script>
 <script src="{{asset('js/material.min.js')}}" type="text/javascript"></script>
 <!--  Charts Plugin -->
 <script src="{{asset('js/chartist.min.js')}}"></script>
