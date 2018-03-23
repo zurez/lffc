@@ -10,6 +10,7 @@ use App\Hack;
 use App\SpecialHack;
 use App\Partners;
 use App\ReportedHack;
+use App\Tag;
 use Carbon;
 use DB;
 use MongoDB;
@@ -185,5 +186,35 @@ class HackController extends Controller
     	->with("shacks",$data)
 
     	;
+    }
+
+    public function tag_list()
+    {
+    	$tags=Tag::all();
+    	return view("hack.tag_list")
+    	->with("title","Tag List")
+    	->with("tags",$tags)
+    	;
+    }
+
+    public function new_tag(Request$r)
+    {
+    	return view("hack.tag_new")
+    	->with("title","Add Tag")
+    	
+    	;
+    	
+    }
+    public function save_tag(Request$r)
+    {
+    	$tag=$r->tag;
+    	if (empty($tag)) {
+    		dd("No tag  provided");
+    	}
+
+    	$t=new Tag;
+    	$t->tag=$tag;
+    	$r->save();
+
     }
 }

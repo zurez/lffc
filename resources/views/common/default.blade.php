@@ -126,7 +126,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./notification">
+                    <a href="{{url("notify")}}">
                         <i class="material-icons">notifications_active</i>
                         <p>Send Notification</p>
                     </a>
@@ -138,7 +138,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./tags">
+                    <a href="{{url('tag/list')}}">
                         <i class="material-icons">loyalty</i>
                         <p>Tag List</p>
                     </a>

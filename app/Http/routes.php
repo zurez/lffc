@@ -29,3 +29,8 @@ Route::group(["prefix"=>"hack"],function(){
 	Route::get("resolve/{type}","HackController@resolve_hack");
 
 });
+Route::group(["prefix"=>"tag"],function(){
+	Route::get("new","HackController@new_tag");
+	Route::post("new","HackController@save_tag");
+	Route::get("list","HackController@tag_list");
+});
