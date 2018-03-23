@@ -15,10 +15,21 @@
  			<tbody>
  				@foreach($shacks as $shack)
  					
- 					@if(!empty($shack))
+ 					@if(!empty($shack) and !empty($shack->hack))
+ 					<?php
+ 						$sno="NA";
+
+ 						if (!empty($shack->hack->serial_number)) {
+ 							$sno=$shack->hack->serial_number;
+ 						}
+ 						$type="NA";
+ 						if (!empty($shack->hack->hack_type)) {
+ 							$type=$shack->hack->hack_type;
+ 						}
+ 					?>
  					<tr>
- 						<td>{{$shack->hack->serial_number}}</td>
- 						<td>{{$shack->hack->hack_type}}</td>
+ 						<td>{{$sno}}</td>
+ 						<td>{{$type}}</td>
  						<td>{{$shack->hack->category}}</td>
  						<td>
 	 						<a href="{{url("hack/report/single",$shack->hack->_id)}}" target="_blank">

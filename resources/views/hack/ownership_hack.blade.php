@@ -8,7 +8,7 @@
 	 				<th>Serial No.</th>
 	 				<th>Type</th>
 	 				<th>Category</th>
-	 				<th>Reported Count</th>
+	 				
 	 				<th>Action</th>
  				</tr>
  			</thead>
@@ -20,7 +20,7 @@
  						<td>{{$hack->serial_number}}</td>
  						<td>{{$hack->hack_type}}</td>
  						<td>{{$hack->category}}</td>
- 						<td>{{count($hack->reports)}}</td>
+ 						
  						<td><a href="{{url("hack/edit",$hack->_id)}}" target="_blank">Edit</a></td>
  					</tr>
  					@endif
